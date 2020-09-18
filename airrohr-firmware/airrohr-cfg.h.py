@@ -27,6 +27,7 @@ Bool		send2dusti
 Bool		ssl_dusti
 Bool		send2madavi
 Bool		ssl_madavi
+Bool        send2robonomics
 Bool		send2sensemap
 Bool		send2fsapp
 Bool		send2aircms

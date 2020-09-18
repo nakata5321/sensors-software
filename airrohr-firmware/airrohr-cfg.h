@@ -50,6 +50,7 @@ enum ConfigShapeId {
 	Config_ssl_dusti,
 	Config_send2madavi,
 	Config_ssl_madavi,
+	Config_send2robonomics,
 	Config_send2sensemap,
 	Config_send2fsapp,
 	Config_send2aircms,
@@ -111,6 +112,7 @@ const char CFG_KEY_SEND2DUSTI[] PROGMEM = "send2dusti";
 const char CFG_KEY_SSL_DUSTI[] PROGMEM = "ssl_dusti";
 const char CFG_KEY_SEND2MADAVI[] PROGMEM = "send2madavi";
 const char CFG_KEY_SSL_MADAVI[] PROGMEM = "ssl_madavi";
+const char CFG_KEY_SEND2ROBONOMICS[] PROGMEM = "send2robonomics";
 const char CFG_KEY_SEND2SENSEMAP[] PROGMEM = "send2sensemap";
 const char CFG_KEY_SEND2FSAPP[] PROGMEM = "send2fsapp";
 const char CFG_KEY_SEND2AIRCMS[] PROGMEM = "send2aircms";
@@ -172,6 +174,7 @@ static constexpr ConfigShapeEntry configShape[] PROGMEM = {
 	{ Config_Type_Bool, 0, FPSTR(CFG_KEY_SSL_DUSTI), &cfg::ssl_dusti },
 	{ Config_Type_Bool, 0, FPSTR(CFG_KEY_SEND2MADAVI), &cfg::send2madavi },
 	{ Config_Type_Bool, 0, FPSTR(CFG_KEY_SSL_MADAVI), &cfg::ssl_madavi },
+	{ Config_Type_Bool, 0, FPSTR(CFG_KEY_SEND2ROBONOMICS), &cfg::send2robonomics },
 	{ Config_Type_Bool, 0, FPSTR(CFG_KEY_SEND2SENSEMAP), &cfg::send2sensemap },
 	{ Config_Type_Bool, 0, FPSTR(CFG_KEY_SEND2FSAPP), &cfg::send2fsapp },
 	{ Config_Type_Bool, 0, FPSTR(CFG_KEY_SEND2AIRCMS), &cfg::send2aircms },

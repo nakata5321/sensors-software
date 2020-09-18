@@ -19,6 +19,11 @@ const char WWW_PASSWORD[] PROGMEM = "feinstaub";
 #define SSL_SENSORCOMMUNITY 0
 #define SEND2MADAVI 1
 #define SSL_MADAVI 0
+
+///////////////////////
+#define SEND2ROBONOMICS 1
+///////////////////////////
+
 #define SEND2SENSEMAP 0
 #define SEND2FSAPP 0
 #define SEND2AIRCMS 0
@@ -34,6 +39,7 @@ const char WWW_PASSWORD[] PROGMEM = "feinstaub";
 enum LoggerEntry {
     LoggerSensorCommunity,
     LoggerMadavi,
+    LoggerRobonomics,
     LoggerSensemap,
     LoggerFSapp,
     Loggeraircms,
@@ -56,6 +62,12 @@ struct LoggerConfig {
 static const char HOST_MADAVI[] PROGMEM = "api-rrd.madavi.de";
 static const char URL_MADAVI[] PROGMEM = "/data.php";
 #define PORT_MADAVI 80
+
+///////
+static const char HOST_ROBONOMICS[] PROGMEM = "192.168.100.73";
+static const char URL_ROBONOMICS[] PROGMEM = "";
+#define PORT_ROBONOMICS 5000
+//////
 
 static const char HOST_SENSORCOMMUNITY[] PROGMEM = "api.sensor.community";
 static const char URL_SENSORCOMMUNITY[] PROGMEM = "/v1/push-sensor-data/";

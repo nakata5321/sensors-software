@@ -225,6 +225,9 @@ namespace cfg {
 	// send to "APIs"
 	bool send2dusti = SEND2SENSORCOMMUNITY;
 	bool send2madavi = SEND2MADAVI;
+	/////////////////
+	bool send2robonomics = SEND2ROBONOMICS;
+	//////////////////////////////////
 	bool send2sensemap = SEND2SENSEMAP;
 	bool send2fsapp = SEND2FSAPP;
 	bool send2aircms = SEND2AIRCMS;
@@ -1009,6 +1012,9 @@ static void createLoggerConfigs() {
 		loggerConfigs[LoggerMadavi].destport = 443;
 		loggerConfigs[LoggerMadavi].session = new_session();
 	}
+
+	loggerConfigs[LoggerRobonomics].destport = PORT_ROBONOMICS;
+
 	loggerConfigs[LoggerSensemap].destport = PORT_SENSEMAP;
 	loggerConfigs[LoggerSensemap].session = new_session();
 	loggerConfigs[LoggerFSapp].destport = PORT_FSAPP;
@@ -1480,6 +1486,13 @@ static void webserver_config_send_body_get(String& page_content) {
 	page_content += FPSTR(WEB_NBSP_NBSP_BRACE);
 	page_content += form_checkbox(Config_ssl_madavi, FPSTR(WEB_HTTPS), false);
 	page_content += FPSTR(WEB_BRACE_BR);
+
+	/////////////////
+
+	add_form_checkbox(Config_send2robonomics, F("API Robonomics"));
+	//page_content += FPSTR(WEB_BRACE_BR);
+
+	//////////////
 	add_form_checkbox(Config_send2csv, tmpl(FPSTR(INTL_SEND_TO), FPSTR(WEB_CSV)));
 	add_form_checkbox(Config_send2fsapp, tmpl(FPSTR(INTL_SEND_TO), FPSTR(WEB_FEINSTAUB_APP)));
 	add_form_checkbox(Config_send2aircms, tmpl(FPSTR(INTL_SEND_TO), F("aircms.online")));
@@ -4144,6 +4157,13 @@ static unsigned long sendDataToOptionalApis(const String &data) {
 		debug_outln_info(FPSTR(DBG_TXT_SENDING_TO), F("madavi.de: "));
 		sum_send_time += sendData(LoggerMadavi, data, 0, HOST_MADAVI, URL_MADAVI);
 	}
+
+	////
+	if (cfg::send2robonomics) {
+		debug_outln_info(FPSTR(DBG_TXT_SENDING_TO), F("robonomics: "));
+		sum_send_time += sendData(LoggerRobonomics, data, 0, HOST_ROBONOMICS, URL_ROBONOMICS);
+	}
+	//////
 
 	if (cfg::send2sensemap && (cfg::senseboxid[0] != '\0')) {
 		debug_outln_info(FPSTR(DBG_TXT_SENDING_TO), F("opensensemap: "));
